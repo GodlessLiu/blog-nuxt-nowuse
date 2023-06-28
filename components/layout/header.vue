@@ -7,6 +7,7 @@
             <LayoutLanguage class=" inline-block mr-4"></LayoutLanguage>
             <NuxtLink to="/navigation" class="link">{{ $t("navigations") }}</NuxtLink>
             <NuxtLink to="/article/browser" class="link">{{ $t("articles") }}</NuxtLink>
+            <a href="http://43.136.131.248:81" target="_blank">books</a>
         </div>
     </div>
 </template>

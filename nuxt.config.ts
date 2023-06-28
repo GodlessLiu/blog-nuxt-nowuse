@@ -42,6 +42,28 @@ export default defineNuxtConfig({
             ).toString()
           ),
         },
+        {
+          id: 'vue',
+          scopeName: 'source.vue',
+          aliases: ['vue'], // Use to mark code blocks in Markdown
+          grammar: JSON.parse(
+            readFileSync(
+              // Place the language grammar file somewhere in your project
+              './shiki/languages/vue.tmLanguage.json'
+            ).toString()
+          ),
+        },
+        {
+          id: 'json',
+          scopeName: 'source.json',
+          aliases: ['json'], // Use to mark code blocks in Markdown
+          grammar: JSON.parse(
+            readFileSync(
+              // Place the language grammar file somewhere in your project
+              './shiki/languages/json.tmLanguage.json'
+            ).toString()
+          ),
+        },
       ],
       theme: {
         // Default theme (same as single string)
