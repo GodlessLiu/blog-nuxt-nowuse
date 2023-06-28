@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 导航item hover效果 */
+.hover-item:hover {
+    background-color: #e5e7eb;
+    border-radius: 4px;
+}
+
+.hover-item:hover .nav-left {
+    opacity: 1;
+}
+
+.hover-item:hover .nav-right {
+    opacity: 1;
+}
+
+/* 文章item hover效果 */
+.hover-aticle {
+    border-left: 4px solid transparent;
+}
+.hover-aticle:hover {
+    border-color: #e5e7eb;
+}
+
+.hover-aticle:hover .aticle-left {
+    opacity: 1;
+}
+
+.hover-aticle:hover .aticle-right {
+    opacity: 1;
+}
+
+/* logo hover效果 */
+.logo {
+    transition: opacity 1s;
+}
+
+.logo:hover {
+    opacity: 0.4;
+}
+
+/* markdown nav hover的效果 */
+.font-nav {
+    transition: opacity 0.5s;
+    font-size: 0.75rem;
+    padding: 4px;
+}
+
+.font-nav:hover {
+    opacity: 0.5;
+    border-left: 1px solid red;
+}
+
+/* cd hover效果 */
+.font-cd {
+    transition: all 0.5s;
+    opacity: 0.5;
+}
+
+.font-cd:hover {
+    border-bottom: 2px solid gray;
+    opacity: 1;
+}
+
+/* article year 效果 */
+.year {
+    --un-text-stroke-opacity: 1;
+    -webkit-text-stroke-color: gray;
+    -webkit-text-stroke-width: 2px;
+    color: transparent;
+}
+
+@layer components {
+    /* 版心 */
+    .type-area {
+        @apply m-auto max-w-300 p-4 md:p-0;
+    }
+}
