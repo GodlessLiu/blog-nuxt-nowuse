@@ -29,29 +29,39 @@ const changeFiles = async (dir: any, index: number) => {
 
 <template>
   <div class="books type-area">
-    <div class="main mx-auto w-1/2 min-w-[24rem] pr-2 flex flex-row bg-white opacity-70 shadow-md">
-      <div class="main-left w-20  box-content border-r-2 p-2">
-        <div v-for="dir, index in  dirs " :key="dir.name" @click="changeFiles(dir, index)"
-          :class="[activeKey === index ? 'dir_clicked' : '', 'text-sm', ' text-gray-700', 'opacity-60']">
-          {{ dir.name }}
-        </div>
+    <div class="main mx-auto w-1/2 min-w-[24rem] bg-white opacity-70 ">
+      <div class="header">
+        <p class=" font-bold text-2xl">
+          Books
+        </p>
+        <p class="text-xs italic mb-4">
+          Here are some books about the front end
+        </p>
       </div>
-      <div class="main-right flex-1 pt-4 pl-2">
-        <span v-show="loading">
-          <Icon class="text-3xl" name="eos-icons:bubble-loading"></Icon>
-        </span>
-        <ul class=" text-xs" v-show="!loading">
-          <li v-for="file in files" :key="file.name">
-            <a :href="activeDir + '/' + file.name" :download="file.name" class="block mb-1 hover:opacity-50">
-              {{ file.name }}
-              <span class=" float-right">
-                <span class=" text-[0.5rem]">
-                  {{ useDayjs(file.mtime) }}
+      <div class="flex flex-row body shadow-md border-t-[1px] pr-2">
+        <div class="main-left w-20  box-content border-r-2 p-2">
+          <div v-for="dir, index in  dirs " :key="dir.name" @click="changeFiles(dir, index)"
+            :class="[activeKey === index ? 'dir_clicked' : '', 'text-sm', ' text-gray-700', 'opacity-60', 'cursor-pointer']">
+            {{ dir.name }}
+          </div>
+        </div>
+        <div class="main-right flex-1 pt-4 pl-2">
+          <span v-show="loading">
+            <Icon class="text-3xl" name="eos-icons:bubble-loading"></Icon>
+          </span>
+          <ul class=" text-xs" v-show="!loading">
+            <li v-for="file in files" :key="file.name">
+              <a :href="activeDir + '/' + file.name" :download="file.name" class="block mb-1 hover:opacity-50">
+                {{ file.name }}
+                <span class=" float-right">
+                  <span class=" text-[0.5rem]">
+                    {{ useDayjs(file.mtime) }}
+                  </span>
                 </span>
-              </span>
-            </a>
-          </li>
-        </ul>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
