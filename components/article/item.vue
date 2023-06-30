@@ -15,17 +15,17 @@ const toPath = (_path: string) => {
 </script>
 <template>
     <div @click="toPath(props.item._path!)"
-        class="hover-aticle cursor-pointer flex flex-row items-center xl:max-w-lg lg:max-w-md md:max-w-sm w-screen">
-        <div class="item-left ml-1 mr-6">
+        class="hl-article hover-aticle cursor-pointer flex flex-row items-center xl:max-w-lg lg:max-w-md md:max-w-sm w-screen">
+        <div class="hl-article-left ml-1 mr-6">
             <span class="text-[1rem] aticle-left opacity-50 break-words">
                 {{ props.item.title }}
             </span>
         </div>
-        <div class="item-right aticle-right opacity-50 text-[0.75rem] min-w-max">
+        <div class="hl-article-right opacity-50 text-[0.75rem] min-w-max">
             <Icon :name="props.item.icon" class="mr-1 text-base" />
-            <span class="font-extralight">
+            <time class="font-extralight" :datetime="props.item.date">
                 {{ props.item.date }}
-            </span>
+            </time>
         </div>
     </div>
 </template>

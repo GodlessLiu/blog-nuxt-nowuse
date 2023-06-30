@@ -33,9 +33,9 @@ const changeFiles = async (dir: any, index: number) => {
 </script>
 
 <template>
-  <div class="books type-area">
-    <div class="main mx-auto w-1/2 min-w-[24rem] bg-white opacity-70 ">
-      <div class="header">
+  <div class="hl-books type-area">
+    <div class="mx-auto w-1/2 min-w-[24rem] bg-white opacity-70 ">
+      <div class="hl-books-header">
         <p class=" font-bold text-2xl">
           Books
         </p>
@@ -43,14 +43,14 @@ const changeFiles = async (dir: any, index: number) => {
           Here are some books about the front end
         </p>
       </div>
-      <div class="flex flex-row body shadow-md border-t-[1px] pr-2">
-        <div class="main-left w-20  box-content border-r-2 p-2">
+      <div class="hl-books-body flex flex-row shadow-md border-t-[1px] pr-2">
+        <div class="hl-body-left w-20  box-content border-r-2 p-2">
           <div v-for="dir, index in  dirs " :key="dir.name" @click="changeFiles(dir, index)"
             :class="[activeKey === index ? 'dir_clicked' : '', 'text-sm', ' text-gray-700', 'opacity-60', 'cursor-pointer']">
             {{ dir.name }}
           </div>
         </div>
-        <div class="main-right flex-1 pt-4 pl-2">
+        <div class="hl-body-right flex-1 pt-4 pl-2">
           <span v-show="loading">
             <Icon class="text-3xl" name="eos-icons:bubble-loading"></Icon>
           </span>

@@ -18,17 +18,18 @@ const unSplitePath = (path: string) => {
                     <div class=" text-xs font-extralight">
                         导航栏
                     </div>
-                    <div v-for="i in doc.body.toc.links" :key="i.id" class="font-nav">
+                    <nav v-for="i in doc.body.toc.links" :key="i.id" class="font-nav">
                         <a :href="`#${i.id}`">{{ i.text }}</a>
                         <MarkdownNav :links="i.children"></MarkdownNav>
-                    </div>
+                    </nav>
                 </div>
-                <div class="m-auto max-w-xl pl-4 pr-4">
+                <article class="m-auto max-w-xl pl-4 pr-4">
                     <h1 class=" text-center text-3xl font-bold mb-8">{{ doc.title }}</h1>
                     <span class="opacity-50 text-xs">
                         <h3 class=" text-right text-xs opacity-50">—— {{ doc.description }}</h3>
                         <span class="mr-8">
-                            Date <Icon name="mdi:clock-outline" class=" text-base"></Icon>: {{ useDayjs(doc.date) }}
+                            Date <Icon name="mdi:clock-outline" class=" text-base"></Icon>: <time :datetime="doc.date">{{
+                                useDayjs(doc.date) }}</time>
                         </span>
                         <span>
                             tag <Icon class="text-base" name="material-symbols:auto-label-outline-sharp"></Icon>: {{ doc.tag
@@ -47,7 +48,7 @@ const unSplitePath = (path: string) => {
                             cd . .
                         </span>
                     </div>
-                </div>
+                </article>
             </template>
         </ContentDoc>
     </div>

@@ -4,7 +4,7 @@ useHead({
 })
 </script>
 <template>
-    <div class="index" data-aos="fade-up" data-aos-duration="2000">
+    <div class="hl-intro" data-aos="fade-up" data-aos-duration="2000">
         <div class="type-area">
             <div class=" m-auto max-w-lg mt-10 text-[.75rem] font-sans font-light">
                 <p class=" text-3xl font-bold mb-5 font-sans">

@@ -4,7 +4,7 @@ const goBack = () => {
 }
 </script>
 <template>
-    <div class="404 mx-auto w-64">
+    <div class="hl-404 mx-auto w-64">
         <p class=" text-center text-[1.5rem] text-gray-500 mt-8">404 Page Not Found</p>
         <p class=" text-center text-[0.8rem] text-purple-200">Sory, nothing could be found</p>
         <p class=" text-left mt-4">

@@ -60,9 +60,9 @@ watch(yearFilter, (n, o) => {
 </script>
 
 <template>
-    <main class="overflow-y-auto" data-aos="fade-up" data-aos-duration="2000">
-        <div class="aticle type-area pb-10">
-            <nav class="flex flex-row justify-center mt=10">
+    <main class="hl-articles-browser overflow-y-auto" data-aos="fade-up" data-aos-duration="2000">
+        <div class="type-area pb-10">
+            <nav class="hl-articles-nav flex flex-row justify-center mt=10">
                 <div v-for="year in sortKeys(YEARS)" :key="year" class="mr-4">
                     <input v-model="yearFilter[year]" type="checkbox" :id="year" name="year">
                     <label :for="year">{{ year }}</label>
@@ -70,7 +70,7 @@ watch(yearFilter, (n, o) => {
             </nav>
             <!-- 遍历每个year -->
             <div v-for="year in sortKeys(Object.keys(itemsGroup))" :key="year"
-                class="mt-32 min-h-fit mx-auto relative w-max">
+                class="hl-articles-year mt-32 min-h-fit mx-auto relative w-max">
                 <div
                     class="absolute -z-50 text-9xl opacity-10 -top-12 md:-left-32 -left-4 font-bold text-transparent year select-none">
                     {{ year }}

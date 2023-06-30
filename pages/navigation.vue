@@ -94,10 +94,10 @@ const navgations: Navigation[] = [
 ]
 </script>
 <template>
-    <div class="navigation type-area pb-10" data-aos="fade-up" data-aos-duration="2000">
+    <div class="hl-navigation type-area pb-10" data-aos="fade-up" data-aos-duration="2000">
         <div class="text-center text-[2.25rem] font-bold">
             Navigation
-            <div class="navgation-item pt-6">
+            <div class="hl-navgation-item pt-6">
                 <NavgationItem v-for="navigation in navgations" :key="navigation.name" :navgation-item="navigation" />
             </div>
         </div>

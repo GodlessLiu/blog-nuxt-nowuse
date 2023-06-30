@@ -17,7 +17,7 @@ const changeLanguage = () => {
 </script>
 
 <template>
-  <div class="language">
+  <div class="hl-lang-switch">
     <button @click="changeLanguage">
       <Icon :name="isChinese ? 'icon-park-outline:english' : 'icon-park-outline:chinese'" class="text-[1rem]"></Icon>
     </button>
