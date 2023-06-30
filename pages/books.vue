@@ -15,6 +15,11 @@ function useFetch(url: string, ref: Ref, first: boolean = false) {
     if (!first) loading.value = false
   })
 }
+
+function useMb(byte: number) {
+  return Math.round(byte / 1024 / 1024 * 100) / 100 + 'Mb'
+}
+
 // 初始化文件夹
 useFetch(BASE_URL, dirs, true)
 // 获得files
@@ -54,6 +59,9 @@ const changeFiles = async (dir: any, index: number) => {
               <a :href="activeDir + '/' + file.name" :download="file.name" class="block mb-1 hover:opacity-50">
                 {{ file.name }}
                 <span class=" float-right">
+                  <span class=" text-[0.75rem] mr-2">
+                    {{ useMb(file.size) }}
+                  </span>
                   <span class=" text-[0.5rem]">
                     {{ useDayjs(file.mtime) }}
                   </span>

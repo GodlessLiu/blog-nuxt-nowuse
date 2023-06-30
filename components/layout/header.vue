@@ -1,7 +1,7 @@
 <template>
-    <div class="header h-10 flex z-50 absolute w-full flex-row justify-between pl-6 pr-4">
+    <div class="header h-10 flex z-50 fixed w-full flex-row justify-between pl-6 pr-4 bg-white">
         <a href="/">
-            <Icon name="ph:book-open-text-thin" class="text-[2.25rem] logo float-left pt-2 fixed "></Icon>
+            <Icon name="ph:book-open-text-thin" class="text-[2.25rem] logo float-left pt-2  "></Icon>
         </a>
         <div class="header-navs h-10 text-[0.75rem] leading-10">
             <LayoutLanguage class=" inline-block mr-4"></LayoutLanguage>
