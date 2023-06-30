@@ -7,13 +7,20 @@ const props = defineProps<{ links: any }>()
 <template>
     <div class="hl-markdown-nav">
         <ul v-for="link in props.links" class="ml-2" :key="link.id">
-            <a :href="`#${link.id}`" class="font-nav">{{ link.id }}</a>
-            <ul v-if="link.children" class="ml-4 break-words" v-for="i in link.children" :key="i.id">
-                <a :href="`#${i.id}`" class="font-nav">{{ i.id }}</a>
-                <markdownNav :links="i.children"></markdownNav>
-            </ul>
+            <a :href="`#${link.id}`" class="font-[0.75rem] hl-markdown-nav-a">{{ link.id }}</a>
         </ul>
     </div>
 </template>
 
+<style lang="scss" scoped>
+.hl-markdown-nav-a {
+    transition: opacity 0.5s;
+    padding: 4px;
+}
+
+.hl-markdown-nav-a:hover {
+    opacity: 0.5;
+    border-left: 1px solid red;
+}
+</style>
 

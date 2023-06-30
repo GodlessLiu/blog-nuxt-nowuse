@@ -1,3 +1,14 @@
 :root {
     --nprogress-bg-color: gray;
 }
+
+/* cd hover效果 */
+.font-cd {
+    transition: all 0.5s;
+    opacity: 0.5;
+}
+
+.font-cd:hover {
+    border-bottom: 2px solid gray;
+    opacity: 1;
+}

@@ -15,9 +15,9 @@ const toPath = (_path: string) => {
 </script>
 <template>
     <div @click="toPath(props.item._path!)"
-        class="hl-article hover-aticle cursor-pointer flex flex-row items-center xl:max-w-lg lg:max-w-md md:max-w-sm w-screen">
-        <div class="hl-article-left ml-1 mr-6">
-            <span class="text-[1rem] aticle-left opacity-50 break-words">
+        class="hl-article cursor-pointer flex flex-row items-center xl:max-w-lg lg:max-w-md md:max-w-sm w-screen">
+        <div class="hl-article-left opacity-50 ml-1 mr-6">
+            <span class="text-[1rem] break-words">
                 {{ props.item.title }}
             </span>
         </div>
@@ -31,3 +31,21 @@ const toPath = (_path: string) => {
 </template>
 
 
+<style lang="scss" scoped>
+/* 文章item hover效果 */
+.hl-article {
+    border-left: 4px solid transparent;
+}
+
+.hl-article:hover {
+    border-color: #e5e7eb;
+}
+
+.hl-article:hover .hl-article-left {
+    opacity: 1;
+}
+
+.hl-article:hover .hl-article-right {
+    opacity: 1;
+}
+</style>

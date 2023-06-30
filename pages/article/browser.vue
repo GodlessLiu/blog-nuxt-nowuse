@@ -72,7 +72,7 @@ watch(yearFilter, (n, o) => {
             <div v-for="year in sortKeys(Object.keys(itemsGroup))" :key="year"
                 class="hl-articles-year mt-32 min-h-fit mx-auto relative w-max">
                 <div
-                    class="absolute -z-50 text-9xl opacity-10 -top-12 md:-left-32 -left-4 font-bold text-transparent year select-none">
+                    class="absolute -z-50 text-9xl opacity-10 -top-12 md:-left-32 -left-4 font-bold text-transparent hl-stroke-year select-none">
                     {{ year }}
                 </div>
                 <ArticleItem v-for="item in itemsGroup[year]" :item="item" :key="item._path"></ArticleItem>
@@ -81,3 +81,12 @@ watch(yearFilter, (n, o) => {
     </main>
 </template>
  
+<style lang="scss" scoped>
+/* article year 效果 */
+.hl-stroke-year {
+    --un-text-stroke-opacity: 1;
+    -webkit-text-stroke-color: gray;
+    -webkit-text-stroke-width: 2px;
+    color: transparent;
+}
+</style>

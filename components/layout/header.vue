@@ -27,4 +27,13 @@
     color: rgb(75 85 99 / var(--tw-text-opacity));
     border-bottom: 2px solid rgb(75 85 99 / var(--tw-text-opacity));
 }
+
+/* logo hover效果 */
+.logo {
+    transition: opacity 1s;
+}
+
+.logo:hover {
+    opacity: 0.4;
+}
 </style>

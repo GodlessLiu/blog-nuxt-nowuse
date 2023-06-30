@@ -18,7 +18,7 @@ const unSplitePath = (path: string) => {
                     <div class=" text-xs font-extralight">
                         导航栏
                     </div>
-                    <nav v-for="i in doc.body.toc.links" :key="i.id" class="font-nav">
+                    <nav v-for="i in doc.body.toc.links" :key="i.id" class="text-[0.75rem]">
                         <a :href="`#${i.id}`">{{ i.text }}</a>
                         <MarkdownNav :links="i.children"></MarkdownNav>
                     </nav>
