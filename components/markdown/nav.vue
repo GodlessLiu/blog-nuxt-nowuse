@@ -7,7 +7,9 @@ const props = defineProps<{ links: any }>()
 <template>
     <div class="hl-markdown-nav">
         <ul v-for="link in props.links" class="ml-2" :key="link.id">
-            <a :href="`#${link.id}`" class="font-[0.75rem] hl-markdown-nav-a">{{ link.id }}</a>
+            <a :href="`#${link.id}`" class=" overflow-hidden  block text-[0.75rem] hl-markdown-nav-a truncate h-5"
+                :title="links.id">{{
+                    link.id }}</a>
         </ul>
     </div>
 </template>

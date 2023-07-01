@@ -128,4 +128,121 @@ css样式重置使用属性选择器和标签选择器。
 ### css选择器分布
 ![css选择器设计最佳实践示意图](/img/css/3.png)
 
+## css选择符
+### 子孙选择符 “空格”
+空格选择符选择元素的所有子孙
+```css
+p a {}
+```
+上面例子表示选择p元素底下的所有a
+### 相邻兄弟选择符 +
+表示于目标元素相邻的第一个兄弟元素(不包括文本和注解)
+```html
+<ul>
+  <li class='first'></li>
+  <!-- 这是一个注解 -->
+  我是一个text文本
+  <li>+++</li>
+  <li></li>
+  <li></li>
+</ul>
+
+<style>
+  .first + li{
+  }
+</style>
+```
+这里style选择的是文本为`+++`的元素
+### 所有后面兄弟选择符 ~
+表示于目标元素相邻的所有兄弟元素(不包括文本和注解)
+```html
+<ul>
+  <li class='first'></li>
+  <!-- 这是一个注解 -->
+  我是一个text文本
+  <li>+++</li>
+  <li>+++</li>
+  <li>+++</li>
+</ul>
+
+<style>
+  .first ~ li{
+  }
+</style>
+```
+这里style选择的是文本为`+++`的元素
+### 双管道 ||
+`some1 || some2`表示属于`some1`的所有`some2`元素
+
+
+## 属性选择器
+### 表示包含这个属性的元素 [attr]
+```css
+/* 拥有disable属性的所有元素，无论该元素的值为什么 */
+[disable]{
+
+}
+```
+
+### 表示严格匹配属性值 [attr=type]
+```css
+[disable=true]{
+
+}
+```
+
+### 表示属性单词完全匹配 [attr~=type]
+```html
+<p data-type="hahahah ggggg">test</p>
+<style>
+  [data-type~='hahahah']{
+    
+  }
+</style>
+```
+以上代码可以匹配p标签，因为css会把它分为两个单词`hahahah`和`ggggg`
+
+### 表示属性起始片段完全匹配 [attr|=type]
+```html
+<p data-type="val-test">匹配</p>
+<p data-type="value">不匹配</p>
+<p data-type="val test">不匹配</p>
+<style>
+  [data-type|='val']{}
+</style>
+```
+
+### 属性正则匹配
+- [attr^=type] 表示以type开始
+- [attr$=type] 表示以type结尾
+- [attr*=type] 表示只要包含type都可以
+
+### 注意点
+属性匹配的值可以不用引号包裹，且不区分双引号和单引号。  
+默认是区分大小写的，但是可以手动设置，之前讲过在`]`前加i
+
+### css属性选择器搜索过滤技术
+```html
+<input type="search" id="input" placeholder="输入城市名称或拼音" />
+<ul> 
+    <li data-search="重庆市chongqing">重庆市</li>
+    <li data-search="哈尔滨市haerbing">哈尔滨市</li>
+    <li data-search="长春市changchun">长春市</li>
+    ...
+</ul>
+```
+```js
+var eleStyle = document.createElement('style');
+document.head.appendChild(eleStyle);
+// 文本框输入
+input.addEventListener("input", function() {
+    var value = this.value.trim();
+    // 这里匹配到不包含搜索的值进行隐藏，并且不区分大小写
+    eleStyle.innerHTML = value ? 
+      '[data-search]:not([data-search*="'+ value +'" i]) { display: none; }' 
+      : '';
+});
+```
+
+## css用户行为伪类
 
