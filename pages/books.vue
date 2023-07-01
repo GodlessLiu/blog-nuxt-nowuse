@@ -1,4 +1,7 @@
 <script setup lang="ts">
+useHead({
+  title: "Hilary Liu - Books"
+})
 const dirs = ref<any>([])
 const files = ref<any>([])
 const activeKey = ref<number>(0)
@@ -45,10 +48,10 @@ const changeFiles = async (dir: any, index: number) => {
       </div>
       <div class="hl-books-body flex flex-row shadow-md border-t-[1px] pr-2">
         <div class="hl-body-left w-20  box-content border-r-2 p-2">
-          <div v-for="dir, index in  dirs " :key="dir.name" @click="changeFiles(dir, index)"
-            :class="[activeKey === index ? 'dir_clicked' : '', 'text-sm', ' text-gray-700', 'opacity-60', 'cursor-pointer']">
+          <button v-for="dir, index in  dirs " :key="dir.name" @click="changeFiles(dir, index)"
+            :class="[activeKey === index ? 'dir_clicked' : '', 'text-sm', 'block', ' text-gray-700', 'opacity-60', 'cursor-pointer']">
             {{ dir.name }}
-          </div>
+          </button>
         </div>
         <div class="hl-body-right flex-1 pt-4 pl-2">
           <span v-show="loading">

@@ -245,4 +245,176 @@ input.addEventListener("input", function() {
 ```
 
 ## css用户行为伪类
+### 用户鼠标悬停伪类 `:hover`
+我们可以使用鼠标悬停实现下拉菜单、tip提示效果。  
+如：当我们鼠标悬停时，图片显示
+```html
+<a href>图片链接</a>
+<img src="1.jpg">
+<style>
+  img {
+    margin-left: 20px;
+    visibility: hidden;
+    transition: visibility .2s;
+    position: absolute;
+    z-index: 1;
+  }
+  /* 这里使用了兄弟相邻选择器，当鼠标在img上时也会显示 */
+  a:hover + img,
+  img:hover {
+      visibility: visible;
+  }
+</style>
+```
 
+### 用户激活行为伪类  `:active`
+这个伪类常用在移动端，因为桌面端可以使用`:hover`，这个伪类表示当元素处于激活方式时，如：用户鼠标点击或者手指点击等。  
+开发技巧：  
+我们保证一些元素有点击反馈，可以是使用以下css代码：
+```css
+body {
+  -webkit-tap-highlight-color: rgba (0 , o , 0 ,o ) ;
+}
+[href]:active,
+button:active,
+[type=reset]:active,
+[type=button]:active,
+[type=submit]:active{
+  background-image: linear-gradient (rgba(0,0,0,.05),rgba (0, 0, 0,.05)) ;
+}
+[href] img:active {
+  -webkit-clip-path: polygon ( 0 0，100% 0，100% 100%,0 100%) ;clip-path: polygon (0 0，100% 0，100% 100%,0 100%);
+  outline: 999px solid rgba (0 , 0,0,.05) ;outline-offset : -999px;
+}
+```
+
+### 聚焦伪类 `:focus`
+与`:active`不同的是，`:focus`只能用于一些特定的元素  
+- 非disabled状态的表单元素,如`input`输入框、`select`下拉框、`button`按钮等;
+- 包含href属性的<a>元素;
+- <area>元素，不过可以生效的CSS属性有限;
+- HTML5中的<summary>元素;
+
+使普通元素也有能`:focus`：  
+> 为普通元素加上tabindex属性
+>
+>如果期望<div>元素可以被Tab键索引，且被点击的时候可以触发:focus 伪类样式，则使用tabindex="O";
+>
+>如果不期望<div>元素可以被Tab键索引，且只在它被点击的时候触发:focus伪类样式，则使用tabindex="-1"。
+>
+>对于普通元素，没有使用自然数作为tabindex属性值的场景。
+
+```html
+点击后面的二维码图标：<img class="icon-qrcode" src="icon-qrcode.svg" tabindex="0">
+<img class="img-qrcode" src="qrcode.png">
+<style>
+  .icon-qrcode {
+    width: 20px; height: 20px;
+    vertical-align: middle;
+  }
+  .img-qrcode {
+      position: absolute;
+      display: none;
+      box-shadow: 1px 1px 2px rgba(0,0,0,.2);
+  }
+  :focus + .img-qrcode {
+      display: inline;
+  }
+</style>
+```
+`:focus`和键盘无障碍访问  
+*不建议使用`div`和`span`来模仿`button`*，因为像`div`和`span`没有`button`一样可以被键盘`:focus`，即使我们使用了`tabindex`，但是`div`和`span`也不能被键盘的`enter`键click。如果觉得`button`原生UI太丑，可以使用label来进行处理，添加`for`。
+
+### 整体焦点伪类 `:focus-within`
+当我们为一个元素设置了`:focus-within`时，他的任意一个子元素处于聚焦状态时，都会被匹配。  
+如：  
+```html
+<style>
+	.cs-normal:focus-within .cs-label {
+    color: darkblue;
+    text-shadow: 0 0 1px;
+}
+</style>
+<div class="cs-normal">
+    <label class="cs-label">用户名：</label><input class="cs-input">
+</div>
+<div class="cs-normal">
+  	<label class="cs-label">密码：</label><input class="cs-input">
+</div>
+```
+
+使用`:focus-within`[实现无障碍下拉菜单](https://demo.cssworld.cn/selector/7/4-2.php)的效果：  
+```html
+<!-- 部分代码 -->
+<div class="cs-bar">         
+    <div class="cs-details">
+        <a href="javascript:" class="cs-summary">我的消息</a> 
+        <div class="cs-datalist">
+            <a href class="cs-datalist-a">我的回答<sup class="cs-datalist-sup">12</sup></a>
+            <a href class="cs-datalist-a">我的私信</a>
+            <a href class="cs-datalist-a">未评价订单<sup class="cs-datalist-sup">2</sup></a>
+            <a href class="cs-datalist-a">我的关注</a>
+        </div>
+    </div>
+</div>
+<style>
+  .cs-details:focus-within .cs-datalist {
+    display: block;
+  }
+</style>
+```
+
+## URL定位伪类
+### 目标伪类 `:target`
+它是一个与URL地址中的锚点定位强关联的伪类，可以用来实现很多原本需要JavaScript才能实现的交互效果。  
+[URL锚点](https://zhuanlan.zhihu.com/p/315673895#:~:text=%E7%89%B9%E6%80%A7%203-,HTML%20%E9%94%9A%E7%82%B9,-%E5%9C%A8%20HTML%20%E4%B8%AD)可以和页面中id匹配的元素进行锚定，浏览器的默认行为是触发滚动定位，同时进行:tarqet伪类匹配。  
+下面是基于`:target`做的一些交互，没有使用`JS`.  
+1. 阅读更多
+```html
+文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容……
+<div id="articleMore" hidden></div>
+<a href="#articleMore" class="cs-button" data-open="true">阅读更多</a>          
+<p class="cs-more-p">更多文章内容，更多文章内容，更多文章内容，更多文章内容。</p>
+<a href="##" class="cs-button" data-open="false">收起</a>
+<style>
+  .cs-more-p,
+  [data-open=false] {
+      display: none;
+  }
+  :target ~ [data-open=true] {
+      display: none;
+  }
+  :target ~ .cs-more-p,
+  :target ~ [data-open=false] {
+      display: block;
+  }
+</style>
+```
+2. 选项卡
+[选项卡案例](https://demo.cssworld.cn/selector/8/3-2.php)
+
+## 输入伪类
+1. [使用`:placeholder-shown`实现不同填充风格的input框](https://demo.cssworld.cn/selector/9/1-1.php)
+2. [使用`:default`实现推荐选项](https://demo.cssworld.cn/selector/9/1-2.php)
+3. `:checked`比`[checked]`更好，因为`:checked`拥有交互的形式——当用户修改input框的状态时，`[checked]`不会做实时的变化。
+4. [`:checked`伪类与开关效果实例页面](https://demo.cssworld.cn/selector/9/2-4.php)
+5. [`:checked`伪类实现标签选择和壁纸选择](https://demo.cssworld.cn/selector/9/2-5.php)
+6. [`:indeterminate`伪类与单选框组未选择提示](https://demo.cssworld.cn/selector/9/2-7.php)
+
+## 树结构伪类
+### `:root`
+`:root`伪类就是表示html，但是它的优先级比html高。
+1. `:root`中定义css变量
+常常在`:root`里面定义变量（如整站的颜色、主屏宽度、布局尺寸等），因为这样的代码可读性高，他与html相互合作，在html里面负责样式，在`:root`里面负责变量声明。
+```css
+:root {
+  /*颜色变量*/
+  --blue: #2486ff;
+  --red: #f4615c;/*尺寸变量*/
+  --layerwidth : 1190px;
+}
+html {
+  overflow : auto ;
+}
+
+```
