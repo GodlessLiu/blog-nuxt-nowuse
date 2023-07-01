@@ -7,7 +7,7 @@
             <LayoutLanguage class="inline-block mr-4"></LayoutLanguage>
             <NuxtLink to="/navigation" class="hl-nav-link">{{ $t("navigations") }}</NuxtLink>
             <NuxtLink to="/article/browser" class="hl-nav-link">{{ $t("articles") }}</NuxtLink>
-            <NuxtLink to="/books" class="hl-nav-link">books</NuxtLink>
+            <NuxtLink to="/books" class="hl-nav-link">{{ $t("books") }}</NuxtLink>
         </div>
     </div>
 </template>

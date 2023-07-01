@@ -2,10 +2,5 @@
   "home": "首页",
   "navigations": "导航",
   "articles": "文章",
-  "navigationsData": {
-    "baidu": {
-      "name": "百度",
-      "description": "中文搜索引擎"
-    }
-  }
+  "books": "书籍"
 }
