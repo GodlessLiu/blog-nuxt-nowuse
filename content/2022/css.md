@@ -410,11 +410,111 @@ button:active,
 :root {
   /*颜色变量*/
   --blue: #2486ff;
-  --red: #f4615c;/*尺寸变量*/
+  --red: #f4615c;
+  /*尺寸变量*/
   --layerwidth : 1190px;
 }
 html {
   overflow : auto ;
 }
-
 ```
+
+### `:empty`用来匹配元素没有子元素的情况
+我们常用`:empty`来处理闭合的标签为空的情况。
+```html
+<div class="cs-empty"></div>
+<style>
+  .cs-empty:empty {
+    border: 1px dashed #ccc;
+  }
+</style>
+```
+这时`div.cs-empty`就是空的，所以会应用style里面的css  
+- 元素里面有注释会被认为是空的
+- 元素里面不能有空格
+- 在元素里面使用`::before`和`::after`时，不是空的
+
+使用场景：  
+1. 隐藏元素
+我们会为一些元素设置margin或者padding，但是当这些元素内部为空是，页面上就会有一大片空白，这样不好。我们可以使用`:empty`来使元素隐藏，这样就不会留白了。
+```html
+<div class="cs-module"></div>
+<style>
+  .cs-module {
+    padding:20px;
+    margin:100px;
+  }
+  .cs-module:empty {
+    display: none;
+  }
+</style>
+```
+2. 字段缺失智能提示
+```html
+<dl>
+<dt>姓名: </dt>
+<dd>张三</dd>
+<dt>性别: </dt>
+<dd></dd>
+<dt>手机:</dt>
+<dd></dd>
+<dt>邮箱:</dt>
+<dd></dd>
+</dl>
+<style>
+  dd:empty::before {
+    content:"暂无信息";
+    color:"gray";;
+  }
+</style>
+```
+### 子索引伪类
+- `:first-child` 和`:last-child`用来匹配第一个、最后一个子元素
+- `:only-child`用来匹配没有任何兄弟元素的元素
+```html
+<div class="cs-confirm">
+  <!-- 可以匹配:only-child伪类 -->
+  <!-- .cs-confirm-p:only-child{
+
+  } -->
+  <p class="cs-confirm-p">确定删除该内容？</p>
+</div>
+<!-- 不会匹配文本 -->
+<div class="cs-confirm">
+  <!-- 可以匹配:only-child伪类 -->
+  <i>确定删除该内容？</i>删除
+</div>
+```
+- `:nth-child`用来匹配第几个指定索引序号的元素  
+我们没有必要使用`nth-child(1)`, `nth-child(2)`, `nth-child(3)`这样的代码，因为这样不利于维护，且提高了选择器的优先级。它可以接收一个参数，可以是关键字或者函数符号两种类型：  
+1. （关键字值的形式）
+  - odd 匹配第奇数个元素
+  - even 匹配第偶数个元素
+2. （函数符号形式）
+  ![一些案例](/img/css/4.png)  
+  [高亮显示列表](https://demo.cssworld.cn/selector/10/3-2.php)
+
+## 逻辑组合伪类
+- `:not`
+
+- `:is`
+
+- `:where`
+
+- `:has`
+
+
+## 其他伪类
+- `:scope`参考元素伪类
+
+- `:host`shadow树根元素伪类
+
+- `:host-context`shadow树根元素上下文(父元素)匹配伪类
+
+- `:fullscreen`全屏相关的伪类
+
+- `:dir` 方向伪类
+
+- `:lang`语言伪类
+
+- `:playing`和`:paused`（Vidoe/Audio播放状态伪类）
