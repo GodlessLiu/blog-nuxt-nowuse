@@ -1,5 +1,5 @@
 ---
-title: Nuxt Basic study
+title: Nuxt的基本学习
 date: 2021-05-10
 tag: 中文
 icon: teenyicons:nuxtjs-solid

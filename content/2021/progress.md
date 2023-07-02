@@ -1,5 +1,5 @@
 ---
-title: Website development progress
+title: 网站开发进度
 date: 2021-06-10
 tag: 中文
 icon: carbon:progress-bar
@@ -51,6 +51,7 @@ description: 记录这个网站开发的进度的文档
 - 添加books功能
 - 修改books页面的样式
 - 后台设置限速
+- 编写Shell脚本进行对项目上传管理
 
 ## 开发中获得的收获
 1. 快速学习了nuxt，并且学会了nuxt的基本应用，以及tailwind.css自定义样式。
@@ -95,4 +96,4 @@ description: 记录这个网站开发的进度的文档
 
 3. pm2可以设置config  
 [ecosystem.config.js](https://juejin.cn/post/6926357629375610887)
-4. ssr
+4. sh脚本的编写

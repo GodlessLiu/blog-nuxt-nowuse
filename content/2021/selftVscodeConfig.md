@@ -1,5 +1,5 @@
 ---
-title: My own vscode settings
+title: 我自己的一些vscode设置
 date: 2021-06-14
 tag: 中文
 icon: akar-icons:vscode-fill

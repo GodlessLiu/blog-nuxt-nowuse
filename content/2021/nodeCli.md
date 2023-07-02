@@ -1,5 +1,5 @@
 ---
-title: How Can I Write a node Cli
+title: 如何写一个node Cli
 date: 2021-06-17
 tag: node
 icon: mdi:nodejs
