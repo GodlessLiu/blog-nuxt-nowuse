@@ -7,7 +7,7 @@ description: 阅读css 选择器世界
 ---
 
 
-## 使用`-webkit-`解决css存在浏览器兼容问题
+## 使用-webkit-解决css存在浏览器兼容问题
 当我们存在如下代码时：  
 ```css
 .e:hover,
@@ -402,7 +402,7 @@ button:active,
 6. [`:indeterminate`伪类与单选框组未选择提示](https://demo.cssworld.cn/selector/9/2-7.php)
 
 ## 树结构伪类
-### `:root`
+### `:root`表示html
 `:root`伪类就是表示html，但是它的优先级比html高。
 1. `:root`中定义css变量
 常常在`:root`里面定义变量（如整站的颜色、主屏宽度、布局尺寸等），因为这样的代码可读性高，他与html相互合作，在html里面负责样式，在`:root`里面负责变量声明。

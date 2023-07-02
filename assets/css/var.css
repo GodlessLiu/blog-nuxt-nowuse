@@ -12,3 +12,7 @@
     border-bottom: 2px solid gray;
     opacity: 1;
 }
+
+summary::marker {
+    content: "";
+}

@@ -42,9 +42,9 @@ const changeFiles = async (dir: any, index: number) => {
         <p class=" font-bold text-2xl">
           Books
         </p>
-        <p class="text-xs italic mb-4">
+        <summary class="text-xs italic mb-4">
           Here are some books about the front end
-        </p>
+        </summary>
       </div>
       <div class="hl-books-body flex flex-row shadow-md border-t-[1px] pr-2">
         <div class="hl-body-left w-20  box-content border-r-2 p-2">
