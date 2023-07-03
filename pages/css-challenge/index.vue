@@ -7,7 +7,8 @@ useHead({
 const data = [
   // day1-4
   [
-    { name: "Load More", href: "/css-challenge/items/day1" }
+    { name: "Load More", href: "/css-challenge/items/day1" },
+    { name: "Fill Blanks", href: "/css-challenge/items/day2" }
   ],
   // day5-8
   []
@@ -54,5 +55,9 @@ function useIndexToDay(index: number) {
   span:nth-child(2) {
     opacity: 1;
   }
+}
+
+.hl-main-td-a {
+  margin-right: 20px;
 }
 </style>

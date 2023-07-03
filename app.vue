@@ -30,5 +30,16 @@ body {
     background-color: #8884;
   }
 }
+
+.hl-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.hl-main-content {
+  display: inline-block;
+  width: 500px;
+}
 </style>
 
