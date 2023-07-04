@@ -9,6 +9,7 @@ const data = [
     { name: "Load More", href: "/css-challenge/items/day1" },
     { name: "Fill Blanks", href: "/css-challenge/items/day2" },
     { name: "Easy Scroll", href: "/css-challenge/items/day3" },
+    { name: "Drop-down Menu", href: "/css-challenge/items/day4" },
   ],
   // day5-8
   [],
