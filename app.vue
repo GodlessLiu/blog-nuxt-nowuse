@@ -30,6 +30,8 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  height: 100vh;
+  align-items: center;
 }
 
 .hl-main-content {

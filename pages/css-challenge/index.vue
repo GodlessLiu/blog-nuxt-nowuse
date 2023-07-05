@@ -12,7 +12,7 @@ const data = [
     { name: "Drop-down Menu", href: "/css-challenge/items/day4" },
   ],
   // day5-8
-  [],
+  [{ name: "Swith Tabs", href: "/css-challenge/items/day5" }],
 ];
 function useIndexToDay(index: number) {
   return index < 10 ? "00" + index : "0" + index;
@@ -20,7 +20,7 @@ function useIndexToDay(index: number) {
 </script>
 
 <template>
-  <div class="hl-css-chanlenge type-area">
+  <div class="hl-css-chanlenge type-area pt-20">
     <main class="mx-auto w-max">
       <div class="hl-css-chanlenge-hearder">
         <p class="font-bold text-2xl mb-1 opacity-70">Css Chanlenge</p>
@@ -30,11 +30,11 @@ function useIndexToDay(index: number) {
       </div>
       <table>
         <tbody>
-          <tr v-for="item in data">
+          <tr v-for="(item, j) in data">
             <td class="hl-main-td" v-for="(i, index) in item" :key="i.name">
               <a :href="i.href" class="hl-main-td-a">
                 <span class="font-mono mr-1 opacity-40">{{
-                  useIndexToDay(index + 1)
+                  useIndexToDay(j * 4 + index + 1)
                 }}</span>
                 <span class="text-[0.75rem] opacity-60">{{ i.name }}</span>
               </a>

@@ -106,7 +106,7 @@ const navgations: Navigation[] = [
 </script>
 <template>
   <div
-    class="hl-navigation type-area pb-10"
+    class="hl-navigation type-area pb-10 pt-20"
     data-aos="fade-up"
     data-aos-duration="2000"
   >

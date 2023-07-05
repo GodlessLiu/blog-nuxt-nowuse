@@ -35,7 +35,7 @@ const changeFiles = async (dir: any, index: number) => {
 </script>
 
 <template>
-  <div class="hl-books type-area">
+  <div class="hl-books type-area pt-20">
     <div class="mx-auto w-1/2 min-w-[24rem] bg-white opacity-70">
       <div class="hl-books-header">
         <p class="font-bold text-2xl">Books</p>
