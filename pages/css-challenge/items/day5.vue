@@ -1,24 +1,11 @@
 <script lang="ts" setup>
 import { useIntersectionObserver } from "@vueuse/core";
-import { mock } from "node:test";
 definePageMeta({
   layout: "css",
 });
 useHead({
   title: "Css Challenge - Waterfall Flow",
 });
-const hook = ref<HTMLDivElement>();
-// TODO:添加图片懒加载
-const images = ref([
-  "https://images.pexels.com/photos/2335126/pexels-photo-2335126.jpeg?auto=compress&cs=tinysrgb&w=600",
-  "https://images.pexels.com/photos/2724664/pexels-photo-2724664.jpeg?auto=compress&cs=tinysrgb&w=600",
-  "https://images.pexels.com/photos/1574843/pexels-photo-1574843.jpeg?auto=compress&cs=tinysrgb&w=600",
-  "https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&w=600",
-  "https://images.pexels.com/photos/3265456/pexels-photo-3265456.jpeg?auto=compress&cs=tinysrgb&w=600",
-  "https://images.pexels.com/photos/933054/pexels-photo-933054.jpeg?auto=compress&cs=tinysrgb&w=600",
-  "https://images.pexels.com/photos/1553963/pexels-photo-1553963.jpeg?auto=compress&cs=tinysrgb&w=600",
-  "https://images.pexels.com/photos/1647972/pexels-photo-1647972.jpeg?auto=compress&cs=tinysrgb&w=600",
-]);
 const Mockimg = [
   "https://images.pexels.com/photos/772803/pexels-photo-772803.jpeg?auto=compress&cs=tinysrgb&w=600",
   "https://images.pexels.com/photos/1261728/pexels-photo-1261728.jpeg?auto=compress&cs=tinysrgb&w=600",
@@ -30,32 +17,51 @@ const Mockimg = [
   "https://images.pexels.com/photos/1840101/pexels-photo-1840101.jpeg?auto=compress&cs=tinysrgb&w=600",
   "https://images.pexels.com/photos/795188/pexels-photo-795188.jpeg?auto=compress&cs=tinysrgb&w=600",
   "https://images.pexels.com/photos/2086622/pexels-photo-2086622.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/2335126/pexels-photo-2335126.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/2724664/pexels-photo-2724664.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/1574843/pexels-photo-1574843.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/3265456/pexels-photo-3265456.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/933054/pexels-photo-933054.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/1553963/pexels-photo-1553963.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/1647972/pexels-photo-1647972.jpeg?auto=compress&cs=tinysrgb&w=600",
 ];
 
-function mockApi(page: number, size: number) {
+function mockApi(
+  page: number,
+  size: number
+): Promise<{ data: any; total: number }> {
   return new Promise((resolve) => {
     setTimeout(() => {
-      const total = images.value.push(
-        ...Mockimg.slice(page * size, page * size + size)
-      );
-      resolve(total);
+      const data = Mockimg.slice(page * size, page * size + size);
+      resolve({
+        data,
+        total: 18,
+      });
     }, 500);
   });
 }
+
+const hook = ref<HTMLDivElement>();
+// TODO:添加图片懒加载
+const images = ref<any[]>([]);
+
 const loadingShow = ref(true);
 const loading = ref<boolean>(false);
 let page = 0;
-let size = 6;
-const total = 18;
+let size = 12;
 
-const Load = (fn: Function) => {
-  mockApi(page, size).then((num) => {
+const Load = async (fn: Function) => {
+  const { data, total } = await mockApi(page, size);
+  images.value = [...images.value, ...data];
+  nextTick(() => {
     fn();
-    if (num === total) {
+    if (total === images.value.length) {
       loadingShow.value = false;
       stop();
+    } else {
+      page++;
     }
-    page++;
   });
 };
 
@@ -66,6 +72,9 @@ const { stop } = useIntersectionObserver(
       loading.value = true;
       Load(() => (loading.value = false));
     }
+  },
+  {
+    rootMargin: "0px 0px 50px 0px",
   }
 );
 </script>
