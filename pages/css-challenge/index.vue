@@ -12,7 +12,7 @@ const data = [
     { name: "Drop-down Menu", href: "/css-challenge/items/day4" },
   ],
   // day5-8
-  [{ name: "Swith Tabs", href: "/css-challenge/items/day5" }],
+  [{ name: "Waterfall Flow", href: "/css-challenge/items/day5" }],
 ];
 function useIndexToDay(index: number) {
   return index < 10 ? "00" + index : "0" + index;
