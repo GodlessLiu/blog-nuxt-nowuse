@@ -70,4 +70,11 @@ const images = [
     -moz-columns: 2;
   }
 }
+@media screen and (max-width: 390px) {
+  .main {
+    columns: 1;
+    -webkit-columns: 1;
+    -moz-columns: 1;
+  }
+}
 </style>
