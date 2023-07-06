@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@types/marked": "^5.0.0",
+    "@vueuse/core": "^10.2.1",
     "aos": "^3.0.0-beta.6",
     "dayjs": "^1.11.8",
     "marked": "^5.0.5",

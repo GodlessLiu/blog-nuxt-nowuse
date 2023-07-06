@@ -7,25 +7,27 @@ useHead({
 });
 </script>
 <template>
-  <main class="hl-main">
-    <div class="hl-main-cotent">
-      <div class="menu">
-        <a href="" class="menu-a">菜单</a>
-        <div class="menu-list">
-          <ul>
-            <li><a href="" class="menu-list-a">我的</a></li>
-            <li><a href="" class="menu-list-a">交流</a></li>
-            <li><a href="" class="menu-list-a">主页</a></li>
-          </ul>
+  <div class="day4">
+    <main class="hl-main">
+      <div class="hl-main-cotent">
+        <div class="menu">
+          <a href="" class="menu-a">菜单</a>
+          <div class="menu-list">
+            <ul>
+              <li><a href="" class="menu-list-a">我的</a></li>
+              <li><a href="" class="menu-list-a">交流</a></li>
+              <li><a href="" class="menu-list-a">主页</a></li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  </main>
-  <CssChallengeFooter
-    :href="'https://github.com/GodlessLiu/css-challenge/blob/main/day4.vue'"
-    :date="'2023/7/5'"
-  >
-  </CssChallengeFooter>
+    </main>
+    <CssChallengeFooter
+      :href="'https://github.com/GodlessLiu/css-challenge/blob/main/day4.vue'"
+      :date="'2023/7/5'"
+    >
+    </CssChallengeFooter>
+  </div>
 </template>
 
 <style lang="css" scoped>

@@ -8,19 +8,21 @@ useHead({
 </script>
 
 <template>
-  <main class="hl-main-self">
-    <div class="img img1"></div>
-    <div class="content">CONTENT1</div>
-    <div class="img img2"></div>
-    <div class="content">CONTENT2</div>
-    <div class="img img3"></div>
-    <div class="content">CONTENT3</div>
-  </main>
-  <CssChallengeFooter
-    :href="'https://github.com/GodlessLiu/css-challenge/blob/main/day3.vue'"
-    :date="'2023/7/4'"
-  >
-  </CssChallengeFooter>
+  <div class="day3">
+    <main class="hl-main-self">
+      <div class="img img1"></div>
+      <div class="content">CONTENT1</div>
+      <div class="img img2"></div>
+      <div class="content">CONTENT2</div>
+      <div class="img img3"></div>
+      <div class="content">CONTENT3</div>
+    </main>
+    <CssChallengeFooter
+      :href="'https://github.com/GodlessLiu/css-challenge/blob/main/day3.vue'"
+      :date="'2023/7/4'"
+    >
+    </CssChallengeFooter>
+  </div>
 </template>
 <style lang="css" scoped>
 .hl-main-self > div {
