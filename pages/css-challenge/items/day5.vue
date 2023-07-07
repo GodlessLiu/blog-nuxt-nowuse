@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { useIntersectionObserver } from "@vueuse/core";
 definePageMeta({
   layout: "css",
 });
@@ -27,75 +26,72 @@ const Mockimg = [
   "https://images.pexels.com/photos/1647972/pexels-photo-1647972.jpeg?auto=compress&cs=tinysrgb&w=600",
 ];
 
-function mockApi(
-  page: number,
-  size: number
-): Promise<{ data: any; total: number }> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const data = Mockimg.slice(page * size, page * size + size);
-      resolve({
-        data,
-        total: 18,
-      });
-    }, 500);
-  });
-}
+// function mockApi(
+//   page: number,
+//   size: number
+// ): Promise<{ data: any; total: number }> {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       const data = Mockimg.slice(page * size, page * size + size);
+//       resolve({
+//         data,
+//         total: 18,
+//       });
+//     }, 500);
+//   });
+// }
 
-const hook = ref<HTMLDivElement>();
-// TODO:添加图片懒加载
-const images = ref<any[]>([]);
+// const hook = ref<HTMLDivElement>();
+// const images = ref<any[]>([]);
 
-const loadingShow = ref(true);
-const loading = ref<boolean>(false);
-let page = 0;
-let size = 12;
+// const loadingShow = ref(true);
+// const loading = ref<boolean>(false);
+// let page = 0;
+// let size = 12;
 
-const Load = async (fn: Function) => {
-  const { data, total } = await mockApi(page, size);
-  images.value = [...images.value, ...data];
-  nextTick(() => {
-    fn();
-    if (total === images.value.length) {
-      loadingShow.value = false;
-      stop();
-    } else {
-      page++;
-    }
-  });
-};
+// const Load = async (fn: Function) => {
+//   const { data, total } = await mockApi(page, size);
+//   images.value = [...images.value, ...data];
+//   nextTick(() => {
+//     fn();
+//     console.log(images.value);
 
-const { stop } = useIntersectionObserver(
-  hook,
-  ([{ isIntersecting }], observerElement) => {
-    if (isIntersecting && !loading.value) {
-      loading.value = true;
-      Load(() => (loading.value = false));
-    }
-  },
-  {
-    rootMargin: "0px 0px 50px 0px",
-  }
-);
+//     if (total === images.value.length) {
+//       loadingShow.value = false;
+//       stop();
+//     } else {
+//       page++;
+//     }
+//   });
+// };
+
+// const { stop } = useIntersectionObserver(
+//   hook,
+//   ([{ isIntersecting }], observerElement) => {
+//     if (isIntersecting && !loading.value) {
+//       loading.value = true;
+//       Load(() => (loading.value = false));
+//     }
+//   },
+//   {
+//     rootMargin: "0px 0px 50px 0px",
+//   }
+// );
 </script>
 <template>
   <div class="day5">
     <main class="hl-main">
-      <div class="waterfall-flow w-full h-full">
+      <div class="waterfall-flow h-full">
         <div class="main">
-          <div class="box" v-for="i in images" :key="i">
-            <img :src="i" />
+          <div class="box" v-for="i in Mockimg" :key="i">
+            <img src="~/assets/default.jpg" v-lazyImg="i" />
           </div>
         </div>
-        <div class="end text-center" ref="hook" v-if="loadingShow">
-          loading...
-        </div>
-        <div class="end text-center" ref="hook" v-else>到底了</div>
       </div>
     </main>
     <CssChallengeFooter
       :href="'https://github.com/GodlessLiu/css-challenge/blob/main/day5.vue'"
-      :date="'2023/7/6'"
+      :date="'2022/7/6'"
     >
     </CssChallengeFooter>
   </div>
@@ -103,10 +99,9 @@ const { stop } = useIntersectionObserver(
 
 <style lang="css" scoped>
 .main {
-  padding: 10px;
   columns: 4;
-  -webkit-columns: 4; /* Safari and Chrome */
-  -moz-columns: 4; /* Firefox */
+  -webkit-columns: 4;
+  -moz-columns: 4;
   column-gap: 10px;
 }
 .box {

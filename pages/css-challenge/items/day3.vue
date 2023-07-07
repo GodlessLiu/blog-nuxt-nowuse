@@ -19,7 +19,7 @@ useHead({
     </main>
     <CssChallengeFooter
       :href="'https://github.com/GodlessLiu/css-challenge/blob/main/day3.vue'"
-      :date="'2023/7/4'"
+      :date="'2022/7/4'"
     >
     </CssChallengeFooter>
   </div>
